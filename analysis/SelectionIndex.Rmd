@@ -1,0 +1,120 @@
+---
+title: "Calculate Selection Index"
+author: "Chris Simoes"
+date: "3/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(message=FALSE)
+knitr::opts_chunk$set(cache=FALSE)
+knitr::opts_chunk$set(tidy=TRUE)
+knitr::opts_chunk$set(results="hold")
+knitr::opts_chunk$set(collapse=TRUE)
+knitr::opts_chunk$set(fig.show="hold")
+knitr::opts_chunk$set(tidy.opts = list(wrap=FALSE))
+```
+
+
+## Selecion Index
+
+This is a script to calculate the best selection index when using more than one trait. 
+It is necessary to know the heritability, correlation and the economic value for each trait.
+
+###Script setup
+Install packages, start the README.md, set the random seed  
+```{r Script setup, echo=FALSE, include=FALSE}
+ip <- installed.packages()
+packages_used <- c("tidyverse", "devtools", "here")
+
+ip <- installed.packages()
+for (package in packages_used){
+  if (!(package %in% ip[,"Package"])) install.packages(package)
+}#END packages_used
+
+here::i_am("analysis/SelectionIndex.Rmd")
+
+source(here::here("code/addToREADME.R"))
+
+addToREADME(paste0("## ", rmarkdown::metadata$title), append=F)
+addToREADME(c(date(), ""))
+
+packages_info <- ip[packages_used, c("Package", "Version", "Built")]
+addToREADME(c("The packages used in this script are:", "Package, Version, Built"))
+apply(packages_info, 1, function(vec) addToREADME(paste(vec, collapse=" ")))
+addToREADME("")
+
+random_seed <- 835246
+set.seed(random_seed)
+addToREADME(paste("The random seed is", random_seed))
+```
+## Defining paramenters
+
+You can also embed plots, for example:
+
+```{r parameters, echo=TRUE}
+
+nTraits = 2
+VarPheno <- c(6.37, 0.28)
+ecoValue <- c(1,1)
+H2 <- c(0.60,0.44)
+rA <- 0.29
+rP <- 0.45
+
+addToREADME(c("", "Main Parameters",
+              paste("Traits", nTraits),
+              paste("Heritability", H2),
+              paste("Pheno Variance", VarPheno),
+              paste("Economic Value", ecoValue),
+              paste("Additive Coefficiente", rA),
+              paste("Pheno coefficient", rP))
+            )
+
+
+```
+
+## Calculating Index
+
+This part is using the equation to calculate the index. It has three items:
+1 - Phenotypic matrix (with variance in the diagonal and the correlation between traits in off diagonal).
+2 - Genotypic matrix (it is a matrix with one col and nTraits lines). Calculate the additive variance using heritability formula.
+3 - Economic value is not matrix (They are scalar values to muliply each index).
+
+```{r selection index, echo=TRUE}
+
+# 1 Phenotypic matrix
+#The of diagonal is defined by the covariation between the traits.
+# cov(1,2) = rP x sqrt(varPheno[1] x varPheno[2])
+offDiagonal <- rP*(sqrt(VarPheno[1] * VarPheno[2]))
+PhenoMatrix <- matrix(c(VarPheno[1],offDiagonal,offDiagonal,VarPheno[2]),nrow = nTraits, ncol = nTraits)
+InvPhenoMatrix <- solve(PhenoMatrix) #solve is a command to calculate the inverted matrix
+
+# 2 Genotypic matrix
+VarAdditive1 <- H2[1]*VarPheno[1]
+VarAdditive2 <- H2[2]*VarPheno[2]
+GenoMatrix <- matrix(c(VarAdditive1,VarAdditive2), ncol = 1, nrow = nTraits)
+
+# 3 Economic value
+# Already defined as ecoValue
+
+# Calculate the Index
+SelectionIndex <- InvPhenoMatrix %*% GenoMatrix
+
+# Multiplying the economic value
+
+for (i in 1:nTraits) {
+  SelectionIndex[i,1] <- SelectionIndex[i,1]*ecoValue[i]
+}
+
+
+print(SelectionIndex)
+
+addToREADME(c("Chunk Initiate simulation",
+  paste("Index for trait 1", paste(SelectionIndex[1,1], collapse=" ")),
+  paste("Index for trait 2", paste(SelectionIndex[2,1], collapse=" "))
+))
+
+
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
