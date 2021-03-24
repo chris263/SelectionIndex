@@ -27,6 +27,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -380,7 +382,13 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/chris263/SelectionIndex">
+    <span class="fas fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -441,7 +449,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -508,16 +516,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong99b358c"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 99b358c </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomchris263SelectionIndextree9282259f2cc37b48aea04da94f9d3419425bb459targetblank9282259a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/chris263/SelectionIndex/tree/9282259f2cc37b48aea04da94f9d3419425bb459" target="_blank">9282259</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong99b358c" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomchris263SelectionIndextree9282259f2cc37b48aea04da94f9d3419425bb459targetblank9282259a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 99b358c. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/chris263/SelectionIndex/tree/9282259f2cc37b48aea04da94f9d3419425bb459" target="_blank">9282259</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -528,9 +536,8 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Untracked files:
-    Untracked:  analysis/SelectionIndex.Rmd
-    Untracked:  code/addToREADME.R
+Unstaged changes:
+    Modified:   analysis/SelectionIndex.Rmd
 
 </code></pre>
 <p>
@@ -543,9 +550,69 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/SelectionIndex.Rmd</code>) and HTML (<code>docs/SelectionIndex.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/chris263/SelectionIndex/blob/c63b924d288f6ad559ce0d673a17b8db2d72fefc/analysis/SelectionIndex.Rmd" target="_blank">c63b924</a>
+</td>
+<td>
+chris263
+</td>
+<td>
+2021-03-24
+</td>
+<td>
+Calculate the best selection index
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/chris263/SelectionIndex/c63b924d288f6ad559ce0d673a17b8db2d72fefc/docs/SelectionIndex.html" target="_blank">c63b924</a>
+</td>
+<td>
+chris263
+</td>
+<td>
+2021-03-24
+</td>
+<td>
+Calculate the best selection index
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -559,17 +626,23 @@ There are no past versions. Publish this analysis with <code>wflow_publish()</co
 <h2>Defining paramenters</h2>
 <p>You can also embed plots, for example:</p>
 <pre class="r"><code>
-nTraits = 2
-VarPheno &lt;- c(6.37, 0.28)
-ecoValue &lt;- c(1, 1)
-H2 &lt;- c(0.6, 0.44)
-rA &lt;- 0.29
-rP &lt;- 0.45
+nTraits = 4
+VarPheno &lt;- c(6.37, 0.28, 3.24, 2.64)
+ecoValue &lt;- c(1, 1, 1, 0.5)
+H2 &lt;- c(0.36, 0.44, 0.53, 0.19)
+# The number of terms in rA and rP must be:
+# n(n-1)/2
+# Where n is the number of traits
+dimension &lt;- nTraits * (nTraits - 1)/2
+cat(&quot;Regression coefficeints must have &quot;, dimension, &quot;elemnts.&quot;)
+rA &lt;- c(0.29, 0.32, 0.41, 0.36, 0.29, 0.21)
+rP &lt;- c(0.45, 0.48, 0.54, 0.39, 0.28, 0.51)
 
 addToREADME(c(&quot;&quot;, &quot;Main Parameters&quot;, paste(&quot;Traits&quot;, nTraits), paste(&quot;Heritability&quot;, 
     H2), paste(&quot;Pheno Variance&quot;, VarPheno), paste(&quot;Economic Value&quot;, ecoValue), paste(&quot;Additive Coefficiente&quot;, 
     rA), paste(&quot;Pheno coefficient&quot;, rP)))
-</code></pre>
+
+Regression coefficeints must have  6 elemnts.</code></pre>
 </div>
 <div id="calculating-index" class="section level2">
 <h2>Calculating Index</h2>
@@ -578,15 +651,29 @@ addToREADME(c(&quot;&quot;, &quot;Main Parameters&quot;, paste(&quot;Traits&quot
 # 1 Phenotypic matrix
 #The of diagonal is defined by the covariation between the traits.
 # cov(1,2) = rP x sqrt(varPheno[1] x varPheno[2])
-offDiagonal &lt;- rP * (sqrt(VarPheno[1] * VarPheno[2]))
-PhenoMatrix &lt;- matrix(c(VarPheno[1], offDiagonal, offDiagonal, VarPheno[2]), nrow = nTraits, 
-    ncol = nTraits)
+PhenoMatrix &lt;- matrix(data = NA, nrow = nTraits, ncol = nTraits)
+
+for (i in 1:nTraits) {
+    if (i &lt; nTraits) {
+        for (j in (i + 1):nTraits) {
+            offDiagonal &lt;- rP[i] * (sqrt(VarPheno[i] * VarPheno[j]))
+            PhenoMatrix[i, j] &lt;- offDiagonal
+            PhenoMatrix[j, i] &lt;- offDiagonal
+        }
+    }
+    PhenoMatrix[i, i] &lt;- VarPheno[i]
+}
+
+
 InvPhenoMatrix &lt;- solve(PhenoMatrix)  #solve is a command to calculate the inverted matrix
 
 # 2 Genotypic matrix
-VarAdditive1 &lt;- H2[1] * VarPheno[1]
-VarAdditive2 &lt;- H2[2] * VarPheno[2]
-GenoMatrix &lt;- matrix(c(VarAdditive1, VarAdditive2), ncol = 1, nrow = nTraits)
+GenoMatrix &lt;- matrix(data = NA, ncol = 1, nrow = nTraits)
+
+for (i in 1:nTraits) {
+    GenoMatrix[i, 1] &lt;- H2[i] * VarPheno[i]
+    
+}
 
 # 3 Economic value
 # Already defined as ecoValue
@@ -608,8 +695,10 @@ addToREADME(c(&quot;Chunk Initiate simulation&quot;, paste(&quot;Index for trait
     collapse = &quot; &quot;))))
 
            [,1]
-[1,]  0.7002983
-[2,] -1.0630946</code></pre>
+[1,]  0.3293131
+[2,] -0.8133662
+[3,]  0.5570281
+[4,] -0.1231365</code></pre>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 <br>
 <p>
@@ -634,15 +723,15 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.6      rstudioapi_0.13 knitr_1.30      magrittr_2.0.1 
- [5] workflowr_1.6.2 hms_0.5.3       here_1.0.1      R6_2.5.0       
- [9] rlang_0.4.10    stringr_1.4.0   tools_4.0.3     xfun_0.20      
-[13] git2r_0.28.0    htmltools_0.5.1 ellipsis_0.3.1  yaml_2.2.1     
-[17] digest_0.6.27   rprojroot_2.0.2 tibble_3.0.4    lifecycle_0.2.0
-[21] crayon_1.3.4    formatR_1.7     readr_1.4.0     later_1.1.0.1  
-[25] vctrs_0.3.6     promises_1.1.1  fs_1.5.0        glue_1.4.2     
-[29] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.3 
-[33] pillar_1.4.7    httpuv_1.5.4    pkgconfig_2.0.3</code></pre>
+ [1] Rcpp_1.0.6      rstudioapi_0.13 whisker_0.4     knitr_1.30     
+ [5] magrittr_2.0.1  workflowr_1.6.2 hms_0.5.3       here_1.0.1     
+ [9] R6_2.5.0        rlang_0.4.10    stringr_1.4.0   tools_4.0.3    
+[13] xfun_0.20       git2r_0.28.0    htmltools_0.5.1 ellipsis_0.3.1 
+[17] yaml_2.2.1      digest_0.6.27   rprojroot_2.0.2 tibble_3.0.4   
+[21] lifecycle_0.2.0 crayon_1.3.4    formatR_1.7     readr_1.4.0    
+[25] later_1.1.0.1   vctrs_0.3.6     promises_1.1.1  fs_1.5.0       
+[29] glue_1.4.2      evaluate_0.14   rmarkdown_2.6   stringi_1.5.3  
+[33] compiler_4.0.3  pillar_1.4.7    httpuv_1.5.4    pkgconfig_2.0.3</code></pre>
 </div>
 </div>
 

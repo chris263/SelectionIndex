@@ -55,12 +55,17 @@ You can also embed plots, for example:
 
 ```{r parameters, echo=TRUE}
 
-nTraits = 2
-VarPheno <- c(6.37, 0.28)
-ecoValue <- c(1,1)
-H2 <- c(0.60,0.44)
-rA <- 0.29
-rP <- 0.45
+nTraits = 4
+VarPheno <- c(6.37, 0.28,3.24, 2.64)
+ecoValue <- c(1,1,1,0.5)
+H2 <- c(0.36,0.44,0.53,0.19)
+# The number of terms in rA and rP must be:
+# n(n-1)/2
+# Where n is the number of traits
+dimension <- nTraits*(nTraits-1)/2
+cat("Regression coefficeints must have ",dimension, "elemnts.")
+rA <- c(0.29, 0.32, 0.41, 0.36, 0.29,0.21)
+rP <- c(0.45, 0.48,0.54,0.39,0.28,0.51)
 
 addToREADME(c("", "Main Parameters",
               paste("Traits", nTraits),
@@ -86,14 +91,29 @@ This part is using the equation to calculate the index. It has three items:
 # 1 Phenotypic matrix
 #The of diagonal is defined by the covariation between the traits.
 # cov(1,2) = rP x sqrt(varPheno[1] x varPheno[2])
-offDiagonal <- rP*(sqrt(VarPheno[1] * VarPheno[2]))
-PhenoMatrix <- matrix(c(VarPheno[1],offDiagonal,offDiagonal,VarPheno[2]),nrow = nTraits, ncol = nTraits)
+PhenoMatrix <- matrix(data = NA, nrow = nTraits, ncol = nTraits)
+
+for (i in 1:nTraits){
+  if (i < nTraits){
+    for (j in (i+1):nTraits){
+      offDiagonal <- rP[i]*(sqrt(VarPheno[i] * VarPheno[j]))
+      PhenoMatrix[i,j] <- offDiagonal
+      PhenoMatrix[j,i] <- offDiagonal
+    }
+  }
+  PhenoMatrix[i,i] <- VarPheno[i]
+}
+
+
 InvPhenoMatrix <- solve(PhenoMatrix) #solve is a command to calculate the inverted matrix
 
 # 2 Genotypic matrix
-VarAdditive1 <- H2[1]*VarPheno[1]
-VarAdditive2 <- H2[2]*VarPheno[2]
-GenoMatrix <- matrix(c(VarAdditive1,VarAdditive2), ncol = 1, nrow = nTraits)
+GenoMatrix <- matrix(data=NA, ncol = 1, nrow = nTraits)
+
+for (i in 1:nTraits){
+   GenoMatrix[i,1] <- H2[i]*VarPheno[i]
+
+}
 
 # 3 Economic value
 # Already defined as ecoValue
