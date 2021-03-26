@@ -1,5 +1,5 @@
 ## Calculate Selection Index  
-Wed Mar 24 17:35:07 2021  
+Fri Mar 26 17:49:10 2021  
   
 The packages used in this script are:  
 Package, Version, Built  
@@ -22,7 +22,7 @@ Pheno Variance 2.64
 Economic Value 1  
 Economic Value 1  
 Economic Value 1  
-Economic Value 0.5  
+Economic Value -0.5  
 Additive Coefficiente 0.29  
 Additive Coefficiente 0.32  
 Additive Coefficiente 0.41  
@@ -36,5 +36,5 @@ Pheno coefficient 0.39
 Pheno coefficient 0.28  
 Pheno coefficient 0.51  
 Chunk Initiate simulation  
-Index for trait 1 0.329313128397662  
-Index for trait 2 -0.813366217951042  
+Index for trait 1 0.386469716095723  
+Index for trait 2 -0.490067394857607  

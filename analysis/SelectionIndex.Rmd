@@ -57,7 +57,8 @@ You can also embed plots, for example:
 
 nTraits = 4
 VarPheno <- c(6.37, 0.28,3.24, 2.64)
-ecoValue <- c(1,1,1,0.5)
+econValue <- c(1,1,1,-0.5)
+
 H2 <- c(0.36,0.44,0.53,0.19)
 # The number of terms in rA and rP must be:
 # n(n-1)/2
@@ -71,7 +72,7 @@ addToREADME(c("", "Main Parameters",
               paste("Traits", nTraits),
               paste("Heritability", H2),
               paste("Pheno Variance", VarPheno),
-              paste("Economic Value", ecoValue),
+              paste("Economic Value", econValue),
               paste("Additive Coefficiente", rA),
               paste("Pheno coefficient", rP))
             )
@@ -84,7 +85,7 @@ addToREADME(c("", "Main Parameters",
 This part is using the equation to calculate the index. It has three items:
 1 - Phenotypic matrix (with variance in the diagonal and the correlation between traits in off diagonal).
 2 - Genotypic matrix (it is a matrix with one col and nTraits lines). Calculate the additive variance using heritability formula.
-3 - Economic value is not matrix (They are scalar values to muliply each index).
+3 - Economic value is not matrix (They are scalar values to multiply each index).
 
 ```{r selection index, echo=TRUE}
 
@@ -108,24 +109,18 @@ for (i in 1:nTraits){
 InvPhenoMatrix <- solve(PhenoMatrix) #solve is a command to calculate the inverted matrix
 
 # 2 Genotypic matrix
-GenoMatrix <- matrix(data=NA, ncol = 1, nrow = nTraits)
+GenoMatrix <- matrix(data=0, ncol = nTraits, nrow = nTraits)
 
 for (i in 1:nTraits){
-   GenoMatrix[i,1] <- H2[i]*VarPheno[i]
+   GenoMatrix[i,i] <- H2[i]*VarPheno[i]
 
 }
 
 # 3 Economic value
-# Already defined as ecoValue
+# Already defined as econValue
 
 # Calculate the Index
-SelectionIndex <- InvPhenoMatrix %*% GenoMatrix
-
-# Multiplying the economic value
-
-for (i in 1:nTraits) {
-  SelectionIndex[i,1] <- SelectionIndex[i,1]*ecoValue[i]
-}
+SelectionIndex <- InvPhenoMatrix %*% GenoMatrix %*%econValue
 
 
 print(SelectionIndex)
