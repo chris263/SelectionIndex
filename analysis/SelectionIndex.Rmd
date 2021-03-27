@@ -55,18 +55,20 @@ You can also embed plots, for example:
 
 ```{r parameters, echo=TRUE}
 
-nTraits = 4
-VarPheno <- c(6.37, 0.28,3.24, 2.64)
-econValue <- c(1,1,1,-0.5)
 
-H2 <- c(0.36,0.44,0.53,0.19)
+VarPheno <- c(6.37, 0.28)
+H2 <- c(0.36,0.44)
+econValue <- c(1,1)
+
+nTraits = length(VarPheno)
+
 # The number of terms in rA and rP must be:
 # n(n-1)/2
 # Where n is the number of traits
 dimension <- nTraits*(nTraits-1)/2
 cat("Regression coefficeints must have ",dimension, "elemnts.")
-rA <- c(0.29, 0.32, 0.41, 0.36, 0.29,0.21)
-rP <- c(0.45, 0.48,0.54,0.39,0.28,0.51)
+rA <- c(0.29)
+rP <- c(0.45)
 
 addToREADME(c("", "Main Parameters",
               paste("Traits", nTraits),
@@ -89,10 +91,11 @@ This part is using the equation to calculate the index. It has three items:
 
 ```{r selection index, echo=TRUE}
 
-# 1 Phenotypic matrix
+# 1 Phenotypic nad Genotypic  matrix
 #The of diagonal is defined by the covariation between the traits.
 # cov(1,2) = rP x sqrt(varPheno[1] x varPheno[2])
 PhenoMatrix <- matrix(data = NA, nrow = nTraits, ncol = nTraits)
+GenoMatrix <- matrix(data = 0, nrow = nTraits, ncol = nTraits)
 
 for (i in 1:nTraits){
   if (i < nTraits){
@@ -102,25 +105,15 @@ for (i in 1:nTraits){
       PhenoMatrix[j,i] <- offDiagonal
     }
   }
+  GenoMatrix[i,i] <- H2[i]*VarPheno[i]
   PhenoMatrix[i,i] <- VarPheno[i]
 }
 
-
-InvPhenoMatrix <- solve(PhenoMatrix) #solve is a command to calculate the inverted matrix
-
-# 2 Genotypic matrix
-GenoMatrix <- matrix(data=0, ncol = nTraits, nrow = nTraits)
-
-for (i in 1:nTraits){
-   GenoMatrix[i,i] <- H2[i]*VarPheno[i]
-
-}
-
-# 3 Economic value
-# Already defined as econValue
+print(PhenoMatrix)
+print(GenoMatrix)
 
 # Calculate the Index
-SelectionIndex <- InvPhenoMatrix %*% GenoMatrix %*%econValue
+SelectionIndex <- solve(PhenoMatrix) %*% GenoMatrix %*%econValue # Solve is a command to invert matrix
 
 
 print(SelectionIndex)

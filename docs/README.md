@@ -1,5 +1,5 @@
 ## Calculate Selection Index  
-Fri Mar 26 17:49:10 2021  
+Sat Mar 27 09:44:27 2021  
   
 The packages used in this script are:  
 Package, Version, Built  
@@ -10,31 +10,15 @@ here 1.0.1 4.0.2
 The random seed is 835246  
   
 Main Parameters  
-Traits 4  
+Traits 2  
 Heritability 0.36  
 Heritability 0.44  
-Heritability 0.53  
-Heritability 0.19  
 Pheno Variance 6.37  
 Pheno Variance 0.28  
-Pheno Variance 3.24  
-Pheno Variance 2.64  
 Economic Value 1  
 Economic Value 1  
-Economic Value 1  
-Economic Value -0.5  
 Additive Coefficiente 0.29  
-Additive Coefficiente 0.32  
-Additive Coefficiente 0.41  
-Additive Coefficiente 0.36  
-Additive Coefficiente 0.29  
-Additive Coefficiente 0.21  
 Pheno coefficient 0.45  
-Pheno coefficient 0.48  
-Pheno coefficient 0.54  
-Pheno coefficient 0.39  
-Pheno coefficient 0.28  
-Pheno coefficient 0.51  
 Chunk Initiate simulation  
-Index for trait 1 0.386469716095723  
-Index for trait 2 -0.490067394857607  
+Index for trait 1 0.399357894001018  
+Index for trait 2 -0.41716708858649  
